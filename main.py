@@ -1,5 +1,24 @@
 import os
 import sys
+import subprocess
+import requests
+import time
+import shutil
+import msvcrt
+from colorama import init, Fore, Back
+
+
+USERNAME = 'pyshicDev'
+REPO_NAME = 'pyOptimizer'
+VERSION = '1.1'
+API_URL = f'https://api.github.com/repos/{USERNAME}/{REPO_NAME}/rele1ases/latest'
+
+OPCIONES_DE_RENDIMIENTO = False
+MODO_OSCURO = False
+PLAN_ENERGIA = False
+LIMPIEZA = False
+
+init(autoreset=True)
 
 def check_updates():
     try:
@@ -257,31 +276,11 @@ def menu():
         sys.exit()
 
 if __name__ == "__main__":
-    USERNAME = 'pyshic-lua'
-    REPO_NAME = 'optimizerrepo'
-    VERSION = '1.1'
-    API_URL = f'https://api.github.com/repos/{USERNAME}/{REPO_NAME}/releases/latest'
-    OPCIONES_DE_RENDIMIENTO = False
-    MODO_OSCURO = False
-    PLAN_ENERGIA = False
-    LIMPIEZA = False
-
     try:
-        import subprocess
-        import requests
-        import time
-        import shutil
-        import msvcrt
-        from colorama import init, Fore, Back
-        init(autoreset=True)    
-        
         menu()
-        
-    except Exception as e:
+    except Exception:
         import traceback
         print("\n" + "="*60)
-        print("Se detecto un error.")
-        print(traceback.format_exc())
+        traceback.print_exc()
         print("="*60)
-        input("\nPresiona ENTER para cerrar y ver el error..")       
-
+        input("\nPresiona ENTER para salir...")
